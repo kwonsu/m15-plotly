@@ -1,0 +1,15 @@
+library('plotly')
+ice.cream <- c('vanilla', 'chocolate', 'green tea', 'strawberry')
+price <- c(3.5, 5.2, 6.0, 1.7)
+calories <- c(200, 342, 171, 547)
+data <- data.frame(ice.cream, price, calories)
+
+chart <- plot_ly(data, x = ~price, y = ~calories, type = 'scatter',
+        mode = 'text', text = ~ice.cream, textposition = 'middle right',
+        textfont = list(color = '#000000', size = 16)) %>%
+        layout(title = 'Icecream price and calories',
+         xaxis = list(title = 'price ($)',
+                      zeroline = TRUE,
+                      range = c(0, 7)),
+         yaxis = list(title = 'calories (g)',
+                      range = c(0, 600)))
